@@ -1,0 +1,19 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/Hosts/">
+    <Project Path="src/Hosts/AcervoProfissional.Api/AcervoProfissional.Api.csproj" />
+    <Project Path="src/Hosts/AcervoProfissional.Mcp/AcervoProfissional.Mcp.csproj" />
+    <Project Path="src/Hosts/AcervoProfissional.Worker/AcervoProfissional.Worker.csproj" />
+  </Folder>
+  <Folder Name="/src/Infrastructure/">
+    <Project Path="src/Infrastructure/AcervoProfissional.Infrastructure/AcervoProfissional.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/">
+    <Project Path="src/Modules/AcervoProfissional.Career/AcervoProfissional.Career.csproj" />
+    <Project Path="src/Modules/AcervoProfissional.Recruiting/AcervoProfissional.Recruiting.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/AcervoProfissional.IntegrationTests/AcervoProfissional.IntegrationTests.csproj" />
+    <Project Path="tests/AcervoProfissional.UnitTests/AcervoProfissional.UnitTests.csproj" />
+  </Folder>
+</Solution>
