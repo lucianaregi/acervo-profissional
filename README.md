@@ -45,6 +45,8 @@ cp .env.example .env
 
 Abra o `.env` e preencha as variáveis necessárias para o seu ambiente. O arquivo `.env` **não é versionado** — nunca o commite.
 
+> **Atenção:** o arquivo `.env` é apenas uma referência de configuração local. Os hosts .NET **não carregam `.env` automaticamente** — as variáveis precisam estar disponíveis no ambiente do processo (exportadas no shell ou configuradas via `launchSettings.json`). O suporte a carregamento automático de `.env` nos hosts será implementado quando as integrações que dependem dessas variáveis forem desenvolvidas.
+
 > Consulte `.env.example` para ver todas as variáveis disponíveis e seus valores esperados.
 
 ### 3. Restaurar dependências

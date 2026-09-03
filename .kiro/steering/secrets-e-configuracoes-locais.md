@@ -29,6 +29,8 @@ Credenciais, tokens, connection strings e outros secrets **nunca** devem ser ver
 
 ## Leitura nos projetos .NET
 
-As variáveis do `.env` devem ser carregadas via `DotNetEnv` ou equivalente no `Program.cs` de cada Host, mapeando para `IConfiguration` da forma padrão do ASP.NET Core.
+O arquivo `.env` é uma **referência de configuração local** e **não é carregado automaticamente** pelos hosts .NET. As variáveis precisam estar disponíveis no ambiente do processo para serem aplicadas — via exportação no shell ou via `launchSettings.json`.
+
+O suporte a carregamento automático de `.env` (ex.: via `DotNetEnv`) será implementado quando as integrações que dependem dessas variáveis forem desenvolvidas.
 
 > Enquanto as integrações não estiverem implementadas, as entradas correspondentes ficam comentadas no `.env.example`.
