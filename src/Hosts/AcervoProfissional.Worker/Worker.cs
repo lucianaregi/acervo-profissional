@@ -6,19 +6,32 @@ public class Worker(ILogger<Worker> logger, IConfiguration configuration) : Back
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        var intervalSeconds = configuration.GetValue<int?>("WORKER_INTERVAL_SECONDS");
-        var interval = intervalSeconds is > 0
-            ? TimeSpan.FromSeconds(intervalSeconds.Value)
-            : DefaultInterval;
+        var interval = TryGetInterval(configuration, "WORKER_INTERVAL_SECONDS");
 
         using var timer = new PeriodicTimer(interval);
 
-        while (await timer.WaitForNextTickAsync(stoppingToken))
+        try
         {
-            if (logger.IsEnabled(LogLevel.Information))
+            while (await timer.WaitForNextTickAsync(stoppingToken))
             {
-                logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
+                if (logger.IsEnabled(LogLevel.Information))
+                {
+                    logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
+                }
             }
         }
+        catch (OperationCanceledException)
+        {
+            // encerramento solicitado via stoppingToken — comportamento esperado
+        }
+    }
+
+    private static TimeSpan TryGetInterval(IConfiguration configuration, string key)
+    {
+        var raw = configuration[key];
+        if (int.TryParse(raw, out var seconds) && seconds > 0)
+            return TimeSpan.FromSeconds(seconds);
+
+        return DefaultInterval;
     }
 }
