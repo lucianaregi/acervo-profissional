@@ -1,2 +1,8 @@
 <Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/Hosts/">
+    <Project Path="src/Hosts/AcervoProfissional.Api/AcervoProfissional.Api.csproj" />
+    <Project Path="src/Hosts/AcervoProfissional.Mcp/AcervoProfissional.Mcp.csproj" />
+    <Project Path="src/Hosts/AcervoProfissional.Worker/AcervoProfissional.Worker.csproj" />
+  </Folder>
 </Solution>
